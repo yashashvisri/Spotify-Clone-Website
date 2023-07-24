@@ -40,3 +40,57 @@ audioElement.addEventListener('timeupdate', ()=>{
 myprogressbar.addEventListener('change', ()=>{
     audioElement.currentTime = myprogressbar.value * audioElement.duration/100;
 })
+
+const makeAllPlays = ()=>{
+    Array.from(document.getElementsByClassName('songitemplay')).forEach((Element)=>{
+        Element.classList.remove('fa-pause')
+        Element.classList.add('fa-play')
+    })
+}
+
+Array.from(document.getElementsByClassName('songitemplay')).forEach((Element)=>{
+    Element.addEventListener('click', (e)=>{
+        makeAllPlays();
+        songIndex = parseInt(e.target.id)
+        e.target.classList.remove('fa-play');
+        e.target.classList.add('fa-pause');
+        audioElement.src = `${songIndex+1}.mp3`;
+        audioElement.currentTime = 0;
+        audioElement.play();
+        masterplay.classList.remove('fa-play');
+        masterplay.classList.add('fa-pause');    
+    })
+
+})
+
+document.getElementById('next').addEventListener('click',()=>{
+    if (songIndex>=4){
+        songIndex = 0
+    }
+    else{
+        songIndex += 1;
+
+    }
+    audioElement.src = `${songIndex+1}.mp3`;
+        audioElement.currentTime = 0;
+        audioElement.play();
+        masterplay.classList.remove('fa-play');
+        masterplay.classList.add('fa-pause');
+    
+})
+
+document.getElementById('previous').addEventListener('click',()=>{
+    if (songIndex<=0){
+        songIndex = 0
+    }
+    else{
+        songIndex -= 1;
+
+    }
+    audioElement.src = `${songIndex+1}.mp3`;
+        audioElement.currentTime = 0;
+        audioElement.play();
+        masterplay.classList.remove('fa-play');
+        masterplay.classList.add('fa-pause');
+    
+})
