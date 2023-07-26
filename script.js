@@ -2,12 +2,15 @@ console.log("welcome to spotify");
 
 
 let songIndex = 0;
-let audioElement = new Audio('music.mp3');
+let audioElement = new Audio('SONGS/music.mp3');
 let masterplay = document.getElementById('masterplay');
 let myprogressbar = document.getElementById('myprogressbar');
 
 let songs = [
     {songname: "apna bna le", filePath: "template/music.mp3"},
+    {songname: "RANJHNA", filePath: "template/music3.mp3"},
+    {songname: "SANAM RE", filePath: "template/music4.mp3"},
+    {songname: "BARISH", filePath: "template/music5.mp3"},
 ]
 
 
