@@ -1,16 +1,16 @@
 console.log("welcome to spotify");
 
 
-let songIndex = 0;
-let audioElement = new Audio('SONGS/music.mp3');
+let Index = 0;
+let audioElement = new Audio('music.mp3');
 let masterplay = document.getElementById('masterplay');
 let myprogressbar = document.getElementById('myprogressbar');
 
 let songs = [
-    {songname: "apna bna le", filePath: "template/music.mp3"},
-    {songname: "RANJHNA", filePath: "template/music3.mp3"},
-    {songname: "SANAM RE", filePath: "template/music4.mp3"},
-    {songname: "BARISH", filePath: "template/music5.mp3"},
+    {songname: "apna bna le", filePath: "music.mp3"},
+    {songname: "RANJHNA", filePath: "music.mp3"},
+    {songname: "SANAM RE", filePath: "music.mp3"},
+    {songname: "BARISH", filePath: "music.mp3"},
 ]
 
 
@@ -54,10 +54,10 @@ const makeAllPlays = ()=>{
 Array.from(document.getElementsByClassName('songitemplay')).forEach((Element)=>{
     Element.addEventListener('click', (e)=>{
         makeAllPlays();
-        songIndex = parseInt(e.target.id)
+        Index = parseInt(e.target.id);
         e.target.classList.remove('fa-play');
         e.target.classList.add('fa-pause');
-        audioElement.src = `${songIndex+1}.mp3`;
+        audioElement.src = `${Index+1}.mp3`;
         audioElement.currentTime = 0;
         audioElement.play();
         masterplay.classList.remove('fa-play');
@@ -66,34 +66,3 @@ Array.from(document.getElementsByClassName('songitemplay')).forEach((Element)=>{
 
 })
 
-document.getElementById('next').addEventListener('click',()=>{
-    if (songIndex>=4){
-        songIndex = 0
-    }
-    else{
-        songIndex += 1;
-
-    }
-    audioElement.src = `${songIndex+1}.mp3`;
-        audioElement.currentTime = 0;
-        audioElement.play();
-        masterplay.classList.remove('fa-play');
-        masterplay.classList.add('fa-pause');
-    
-})
-
-document.getElementById('previous').addEventListener('click',()=>{
-    if (songIndex<=0){
-        songIndex = 0
-    }
-    else{
-        songIndex -= 1;
-
-    }
-    audioElement.src = `${songIndex+1}.mp3`;
-        audioElement.currentTime = 0;
-        audioElement.play();
-        masterplay.classList.remove('fa-play');
-        masterplay.classList.add('fa-pause');
-    
-})
